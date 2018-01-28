@@ -3,10 +3,75 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Map</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="map-page">
-  <div style="height: 100%; width: 100%" #mapCanvas id="map_canvas"></div>
+
+
+<ion-content>
+<ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content>
+
+  </ion-refresher-content>
+  </ion-refresher>
+
+<ion-list *ngFor="let card of cards" (ionRefresh)="doRefresh($event)">
+  <ion-item>
+    <ion-slides>
+      <ion-slide>
+        <ion-card>
+
+          <img src="https://picsum.photos/500/150/?random" />
+          <ion-card-content>
+            <ion-card-title>
+              {{card.chName}}
+            </ion-card-title>
+
+          </ion-card-content>
+
+
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+
+          <img src="https://dummyimage.com/500X150/f57676/000000&text=%20">
+          <ion-card-content>
+            <ion-card-title>
+              Courses
+            </ion-card-title>
+
+          </ion-card-content>
+
+
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+
+          <img src="https://dummyimage.com/500X150/6acaf3/000000&text=%20">
+          <ion-card-content>
+            <ion-card-title>
+              Tests
+            </ion-card-title>
+
+          </ion-card-content>
+
+
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+  </ion-item>
+
+</ion-list>
+
 </ion-content>
+
+
+
+
+
+
+

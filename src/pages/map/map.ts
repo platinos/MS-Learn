@@ -4,8 +4,9 @@ import { ConferenceData } from '../../providers/conference-data';
 
 import { Platform } from 'ionic-angular';
 
+import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
-declare var google: any;
+
 
 
 @Component({
@@ -13,42 +14,44 @@ declare var google: any;
   templateUrl: 'map.html'
 })
 export class MapPage {
-
+  cards: { "chName": string }[] = [];
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor(public confData: ConferenceData, public platform: Platform) {
+  constructor(public confData: ConferenceData, public platform: Platform, private ms: MessageServiceProvider) {
+    this.getMessage();
+    
   }
-
-  ionViewDidLoad() {
-
-      this.confData.getMap().subscribe((mapData: any) => {
-        let mapEle = this.mapElement.nativeElement;
-
-        let map = new google.maps.Map(mapEle, {
-          center: mapData.find((d: any) => d.center),
-          zoom: 16
-        });
-
-        mapData.forEach((markerData: any) => {
-          let infoWindow = new google.maps.InfoWindow({
-            content: `<h5>${markerData.name}</h5>`
-          });
-
-          let marker = new google.maps.Marker({
-            position: markerData,
-            map: map,
-            title: markerData.name
-          });
-
-          marker.addListener('click', () => {
-            infoWindow.open(map, marker);
-          });
-        });
-
-        google.maps.event.addListenerOnce(map, 'idle', () => {
-          mapEle.classList.add('show-map');
-        });
-
-      });
+  getMessage() {
+    this.ms.getAllQuestions().subscribe(data => this.showData(data));
 
   }
+  showData(data) {
+    this.cards = [];
+    console.log(data.data.size);
+    for (let element in data.data) {
+       if(element === 'size') break;
+      var name = data.data[element].name;
+      console.log(name);
+      
+      this.cards.push({"chName": name});
+      }
+      //this.cards = this.shuffle(this.cards);
+    }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getMessage();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
+ shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+ 
 }

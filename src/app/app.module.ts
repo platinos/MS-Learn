@@ -28,7 +28,12 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
-
+import { MessageServiceProvider } from '../providers/message-service/message-service';
+import { HttpClientModule } from "@angular/common/http";
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
+import { DataServiceProvider } from '../providers/data-service/data-service';
+//import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,7 @@ import { UserData } from '../providers/user-data';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
@@ -93,7 +99,11 @@ import { UserData } from '../providers/user-data';
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    MessageServiceProvider,
+    BarcodeScanner,
+    Toast,
+    DataServiceProvider
   ]
 })
 export class AppModule { }
