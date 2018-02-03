@@ -13,7 +13,7 @@ import 'rxjs/add/operator/do';
 export class MessageServiceProvider {
 
   constructor(private http: HttpClient) {
-    console.log('Hello MessageServiceProvider Provider');
+    //console.log('Hello MessageServiceProvider Provider');
   }
   getMessage(quesid){
     var dataObj = {
@@ -44,4 +44,47 @@ export class MessageServiceProvider {
 
   }
 
+  getChapters() {
+  
+    return this.http.get('http://35.194.226.60:3000/api/v1/chapters')
+      .do(res => console.log(res));
+
+  }
+  getSubjects() {
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/subjects')
+      .do(res => console.log(res));
+
+  }
+  getChapterDetails(ch_id) {
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/chapters/'+ch_id)
+      .do(res => console.log(res));
+
+  }
+  getQuestionPaper() {
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper')
+      .do(res => console.log(res));
+
+  }
+  getQuestionPaperBySubject(subject) {
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper/subject/'+subject)
+      .do(res => console.log(res));
+
+  }
+  getQuestionPaperDetails(id) {
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper/' + id)
+      .do(res => console.log(res));
+
+  }
+
+  getquestionDetails(id){
+    console.log("looking for ques id : "+id);
+    
+    return this.http.get('http://35.194.226.60:3000/api/v1/questions/' + id)
+      .do(res => console.log(res));
+  }
 }

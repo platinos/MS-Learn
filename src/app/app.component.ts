@@ -18,6 +18,10 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { TestingapiPage } from '../pages/testingapi/testingapi';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { AllTestsPage } from '../pages/all-tests/all-tests';
+
 
 export interface PageInterface {
   title: string;
@@ -45,7 +49,9 @@ export class ConferenceApp {
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Home', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
     { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' }
+    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' },
+    { title: 'testing Api', name: 'TestingapiPage', component: TabsPage, tabComponent: TestingapiPage, index: 5, icon: 'analytics' },
+    { title: 'Available Tests', name: 'AllTestsPage', component: TabsPage, tabComponent: AllTestsPage, index: 6, icon: 'analytics' }
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -66,9 +72,17 @@ export class ConferenceApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public localNotifications: LocalNotifications
   ) {
+    // Schedule delayed notification
+    this.localNotifications.schedule({
+      text: 'You opened the app',
+      at: new Date(new Date().getTime() + 100),
+      led: 'FF0000', 
+      sound:'file://sound.mp3'
 
+    });
     // Check if the user has already seen the tutorial
     this.storage.get('hasSeenTutorial')
       .then((hasSeenTutorial) => {
@@ -166,4 +180,5 @@ export class ConferenceApp {
     }
     return;
   }
+
 }

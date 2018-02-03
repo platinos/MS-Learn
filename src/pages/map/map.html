@@ -16,7 +16,7 @@
   </ion-refresher-content>
   </ion-refresher>
 
-<ion-list *ngFor="let card of cards" (ionRefresh)="doRefresh($event)">
+<ion-list *ngFor="let card of listing" (ionRefresh)="doRefresh($event)">
   <ion-item>
     <ion-slides>
       <ion-slide>
@@ -24,8 +24,8 @@
 
           <img src="https://picsum.photos/500/150/?random" />
           <ion-card-content>
-            <ion-card-title>
-              {{card.chName}}
+            <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
+              {{card.subject}}
             </ion-card-title>
 
           </ion-card-content>
@@ -52,7 +52,7 @@
 
           <img src="https://dummyimage.com/500X150/6acaf3/000000&text=%20">
           <ion-card-content>
-            <ion-card-title>
+            <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
               Tests
             </ion-card-title>
 

@@ -25,6 +25,9 @@ import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
+import { TestingapiPage } from '../pages/testingapi/testingapi';
+import { TestingapidetailsPage } from '../pages/testingapidetails/testingapidetails';
+import { AllTestsPage } from "../pages/all-tests/all-tests";
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -33,6 +36,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
@@ -51,7 +55,10 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    TestingapiPage,
+    TestingapidetailsPage,
+    AllTestsPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,10 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
-        { component: SignupPage, name: 'SignupPage', segment: 'signup' }
+        { component: SignupPage, name: 'SignupPage', segment: 'signup' },
+        { component: AllTestsPage, name: 'AllTestsPage', segment: 'all-tests' },
+        { component: TestingapiPage, name: 'testingapi', segment: 'testingapi' },
+        { component: TestingapidetailsPage, name: 'TestingapidetailsPage', segment: 'Testingapidetail/:ch_id' }
       ]
     }),
     IonicStorageModule.forRoot()
@@ -92,7 +102,10 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+    TestingapiPage,
+    TestingapidetailsPage,
+    AllTestsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -103,7 +116,8 @@ import { DataServiceProvider } from '../providers/data-service/data-service';
     MessageServiceProvider,
     BarcodeScanner,
     Toast,
-    DataServiceProvider
+    DataServiceProvider,
+    LocalNotifications
   ]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { ConferenceData } from '../../providers/conference-data';
 
-import { Platform } from 'ionic-angular';
+import { Platform, NavController } from 'ionic-angular';
 
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
@@ -14,28 +14,25 @@ import { MessageServiceProvider } from '../../providers/message-service/message-
   templateUrl: 'map.html'
 })
 export class MapPage {
-  cards: { "chName": string }[] = [];
+  response: any = {
+    "status": null,
+    "error": null,
+    "response": []
+  };
+  listing: [{}];
   @ViewChild('mapCanvas') mapElement: ElementRef;
-  constructor(public confData: ConferenceData, public platform: Platform, private ms: MessageServiceProvider) {
+  constructor(public navCtrl: NavController, public confData: ConferenceData, public platform: Platform, private ms: MessageServiceProvider) {
     this.getMessage();
     
   }
   getMessage() {
-    this.ms.getAllQuestions().subscribe(data => this.showData(data));
+    this.ms.getSubjects().subscribe(data => {
+      this.response = data;
+      this.listing = this.response.response;
+    });
 
   }
-  showData(data) {
-    this.cards = [];
-    console.log(data.data.size);
-    for (let element in data.data) {
-       if(element === 'size') break;
-      var name = data.data[element].name;
-      console.log(name);
-      
-      this.cards.push({"chName": name});
-      }
-      //this.cards = this.shuffle(this.cards);
-    }
+ 
 
   doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -53,5 +50,8 @@ export class MapPage {
   }
   return a;
 }
+  goToOtherPage(pageid,subject) {
+    this.navCtrl.push(pageid, {subject: subject});
+  }
  
 }
