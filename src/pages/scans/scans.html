@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="about-info">
+    <ion-card *ngIf="!title">
+    <img src="{{quesImg}}" />
+    </ion-card>
+
+    <ion-card *ngIf="title" (swipe)="swipeEvent($event)">
+      
+      <ion-card-content>
+        <ion-card-title>
+          {{chapter}}
+        </ion-card-title>
+        <p [innerHtml]="quesText" class="questxt"></p>
+
+
+
+        <ion-row>
+          <ion-col>
+            <button ion-button outline (click)="scan()">View Theory</button>
+          </ion-col>
+          <ion-col>
+            <button ion-button color="secondary" outline (click)="scan()">View Explanation</button>
+          </ion-col>
+        </ion-row>
+
+        
+        
+      </ion-card-content>
+    </ion-card>
+    <button ion-button large icon-left full (click)="scan()">Scan Now
+      <ion-icon name="qr-scanner"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>

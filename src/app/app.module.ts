@@ -27,7 +27,19 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 import { TestingapiPage } from '../pages/testingapi/testingapi';
 import { TestingapidetailsPage } from '../pages/testingapidetails/testingapidetails';
+
+
+
+
+// Main Pages
+import { DashboardPage } from "../pages/dashboard/dashboard";
+import { ScansPage } from '../pages/scans/scans';
+import { ProfilePage } from "../pages/profile/profile";
 import { AllTestsPage } from "../pages/all-tests/all-tests";
+import { TalkPage } from "../pages/talk/talk";
+
+
+
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -37,6 +49,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
@@ -58,7 +71,11 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     SupportPage,
     TestingapiPage,
     TestingapidetailsPage,
-    AllTestsPage
+    AllTestsPage,
+    DashboardPage,
+    ScansPage,
+    ProfilePage,
+    TalkPage
   ],
   imports: [
     BrowserModule,
@@ -79,8 +96,14 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
-        { component: AllTestsPage, name: 'AllTestsPage', segment: 'all-tests' },
+        // { component: AllTestsPage, name: 'AllTestsPage', segment: 'all-tests' },
         { component: TestingapiPage, name: 'testingapi', segment: 'testingapi' },
+        { component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
+        { component: ScansPage, name: 'Scans', segment: 'scans' },
+        { component: ProfilePage, name: 'Profile', segment: 'profile' },
+        { component: AllTestsPage, name: 'Tests', segment: 'all-tests' },
+        { component: TalkPage, name: 'Talk', segment: 'talks' },
+
         { component: TestingapidetailsPage, name: 'TestingapidetailsPage', segment: 'Testingapidetail/:ch_id' }
       ]
     }),
@@ -105,7 +128,11 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     SupportPage,
     TestingapiPage,
     TestingapidetailsPage,
-    AllTestsPage
+    DashboardPage,
+    ScansPage,
+    ProfilePage,
+    AllTestsPage,
+    TalkPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

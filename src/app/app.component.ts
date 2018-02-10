@@ -21,6 +21,7 @@ import { UserData } from '../providers/user-data';
 import { TestingapiPage } from '../pages/testingapi/testingapi';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { AllTestsPage } from '../pages/all-tests/all-tests';
+import { ScansPage } from '../pages/scans/scans';
 
 
 export interface PageInterface {
@@ -48,10 +49,11 @@ export class ConferenceApp {
   appPages: PageInterface[] = [
     { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
     { title: 'Home', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
-    { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 2, icon: 'map' },
+    { title: 'Scan', name: 'TabsPage', component: TabsPage, tabComponent: ScansPage, index: 2, icon: 'qr-scanner' },
+    { title: 'Map', name: 'TabsPage', component: TabsPage, tabComponent: MapPage, index: 7, icon: 'map' },
     { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 3, icon: 'information-circle' },
-    { title: 'testing Api', name: 'TestingapiPage', component: TabsPage, tabComponent: TestingapiPage, index: 5, icon: 'analytics' },
-    { title: 'Available Tests', name: 'AllTestsPage', component: TabsPage, tabComponent: AllTestsPage, index: 6, icon: 'analytics' }
+    { title: 'testing Api', name: 'TabsPage', component: TestingapiPage, index: 5, icon: 'analytics' },
+    { title: 'Available Tests', name: 'TabsPage', component: AllTestsPage, tabComponent: SchedulePage, index: 0, icon: 'help' }
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -80,7 +82,8 @@ export class ConferenceApp {
       text: 'You opened the app',
       at: new Date(new Date().getTime() + 100),
       led: 'FF0000', 
-      sound:'file://sound.mp3'
+      sound:'file://sound.mp3',
+      icon: 'home'
 
     });
     // Check if the user has already seen the tutorial

@@ -3,17 +3,29 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Available Tests for {{subject}}</ion-title>
+    <ion-title>
+      <ng-container *ngIf="subject; else elseTemplate">
+        Available Tests for {{subject}}
+      </ng-container>
+      <ng-template #elseTemplate>
+         All Available Tests
+      </ng-template>
+      
+      </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-<ion-card *ngIf="listing?.length <= 0">
+<ion-card *ngIf="listing?.length < 1">
 <ion-card-header>
   <h2 ion-text color="danger"> Sorry! No Tests available.</h2>
 </ion-card-header>
 </ion-card>
-  <ion-row *ngFor="let d of listing">
+<ion-grid>
+
+
+  <ion-row>
+    <ion-col col-lg-4  *ngFor="let d of listing">
 
     <ion-card>
       <ion-card-header>
@@ -27,14 +39,15 @@
           <h3>Subject: {{d.qsubject}}</h3>
           <h3>Time: {{d.qtime}}</h3>
           <div text-center>
-            <button ion-button (click)="goToChapterDetail(d.qid)">
+            <button ion-button outline (click)="goToChapterDetail(d.qid)">
               Take Test
             </button>
           </div>
         </ion-list>
       </ion-card-content>
     </ion-card>
+    </ion-col>
   </ion-row>
 
-
+</ion-grid>
 </ion-content>

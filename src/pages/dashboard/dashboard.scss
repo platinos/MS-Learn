@@ -1,0 +1,26 @@
+$categories: (
+ bleh1: color($colors, primary),
+ bleh2: #AC282B,
+ bleh3: #8E8D93,
+ bleh4: #FE4C52,
+ bleh5: #FD8B2D,
+ bleh6: #FED035,
+ bleh7: #69BB7B,
+ bleh8: #3BC7C4,
+ bleh9: #B16BE3,
+ bleh10: #6600CC,
+);
+
+@function auxiliary-categories() {
+  @return map-remove($categories);
+}
+
+page-dashboard {
+  @each $track, $value in auxiliary-categories() {
+   ion-item-sliding[track=#{$track}] ion-label {
+     border-left: 2px solid $value;
+     padding-left: 10px;
+   }
+  }
+}
+

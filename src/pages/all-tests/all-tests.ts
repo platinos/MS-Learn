@@ -3,13 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 import { TestingapidetailsPage } from '../testingapidetails/testingapidetails';
 
-/**
- * Generated class for the AllTestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-all-tests',
@@ -29,25 +22,24 @@ export class AllTestsPage {
 
   ionViewDidLoad() {
     this.subject = this.navParams.data.subject
-    this.getMessage(this.subject);
+    //console.log(this.subject);
+    if(this.subject != null)
+      this.getQuestionPaperBySubject(this.subject);
+    else
+      this.getQuestionPapers();
 
   }
-  getMessage(subject: any) {
-    //this.listing.length = 0;
-    this.ms.getQuestionPaperBySubject(subject).subscribe(data => {
-
-      this.response = data;
-      //console.log(this.response.response);
-      this.listing = this.response.response;
-      //console.log("----------------------------");
-
-      //console.log(this.listing);
-
-
-    });
-
+  getQuestionPaperBySubject(subject: any) {
+    this.ms.getQuestionPaperBySubject(subject).subscribe(data => this.fillData(data));
+  }
+  getQuestionPapers(){
+    this.ms.getQuestionPaper().subscribe(data => this.fillData(data));
   }
   goToChapterDetail(chap_id: any) {
     this.navCtrl.push(TestingapidetailsPage, { ch_id: chap_id });
+  }
+  fillData(data){
+    this.response = data;
+    this.listing = this.response.response;
   }
 }

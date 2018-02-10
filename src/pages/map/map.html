@@ -5,67 +5,96 @@
     </button>
     <ion-title>Dashboard</ion-title>
   </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="dashboard">
+      <ion-segment-button value="subjects">
+        Subjects
+      </ion-segment-button>
+      <ion-segment-button value="courses">
+        Courses
+      </ion-segment-button>
+      <ion-segment-button value="tests">
+        Tests
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 
 
 <ion-content>
-<ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content>
-
-  </ion-refresher-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+  
+    </ion-refresher-content>
   </ion-refresher>
 
-<ion-list *ngFor="let card of listing" (ionRefresh)="doRefresh($event)">
-  <ion-item>
-    <ion-slides>
-      <ion-slide>
-        <ion-card>
+  <div [ngSwitch]="dashboard">
+    <ion-list *ngSwitchCase="'subjects'">
 
-          <img src="https://picsum.photos/500/150/?random" />
-          <ion-card-content>
-            <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
-              {{card.subject}}
-            </ion-card-title>
+      <ion-list *ngFor="let card of listing" (ionRefresh)="doRefresh($event)">
+        <ion-item>
+          <ion-slides>
+            <ion-slide>
+              <ion-card>
+      
+                <img src="https://picsum.photos/500/150/?random" />
+                <ion-card-content>
+                  <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
+                    {{card.subject}}
+                  </ion-card-title>
+      
+                </ion-card-content>
+      
+      
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+      
+                <img src="https://dummyimage.com/500X150/f57676/000000&text=%20">
+                <ion-card-content>
+                  <ion-card-title>
+                    Courses
+                  </ion-card-title>
+      
+                </ion-card-content>
+      
+      
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card>
+      
+                <img src="https://dummyimage.com/500X150/6acaf3/000000&text=%20">
+                <ion-card-content>
+                  <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
+                    Tests
+                  </ion-card-title>
+      
+                </ion-card-content>
+      
+      
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+      
+        </ion-item>
+      
+      </ion-list>
 
-          </ion-card-content>
+    </ion-list>
+    <ion-list *ngSwitchCase="'courses'">
+      <h1>Courses</h1>
+    </ion-list>
+    <ion-list *ngSwitchCase="'tests'">
+      <h1>Tests</h1>
+    </ion-list>
+  </div>
 
 
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card>
 
-          <img src="https://dummyimage.com/500X150/f57676/000000&text=%20">
-          <ion-card-content>
-            <ion-card-title>
-              Courses
-            </ion-card-title>
-
-          </ion-card-content>
-
-
-        </ion-card>
-      </ion-slide>
-      <ion-slide>
-        <ion-card>
-
-          <img src="https://dummyimage.com/500X150/6acaf3/000000&text=%20">
-          <ion-card-content>
-            <ion-card-title (click)="goToOtherPage('AllTestsPage', card.subject)">
-              Tests
-            </ion-card-title>
-
-          </ion-card-content>
-
-
-        </ion-card>
-      </ion-slide>
-    </ion-slides>
-
-  </ion-item>
-
-</ion-list>
 
 </ion-content>
 
