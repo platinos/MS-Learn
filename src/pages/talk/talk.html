@@ -15,4 +15,33 @@
 
 <ion-content padding>
 
+  <ion-list>
+      
+    <div>
+
+      <ion-row>
+        <ion-col col-lg-4  *ngFor="let d of listingTalks">
+    
+    <ion-card >
+          <ion-card-header>
+            <h2> {{d.title}} </h2>
+          </ion-card-header>
+    
+          <ion-card-content class="outer-content">
+            
+            <ion-list>
+              <h3>Description: {{d.description}}</h3>
+              <h3>Scheduled: {{d.scheduled_date}}</h3>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+    
+          
+    </div>
+  
+  
+  </ion-list>
+
 </ion-content>

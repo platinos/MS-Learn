@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
 /**
  * Generated class for the TalkPage page.
@@ -15,11 +16,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TalkPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  responseTalks: any = {
+    "status": null,
+    "error": null,
+    "response": []
+  };
+  listingTalks: [{}];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ms: MessageServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TalkPage');
+    this.ms.getData("conversations/2").subscribe(data => {
+      this.responseTalks=data;
+      this.listingTalks=this.responseTalks.response;
   }
 
 }
