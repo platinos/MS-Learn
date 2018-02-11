@@ -38,6 +38,9 @@ import { ProfilePage } from "../pages/profile/profile";
 import { AllTestsPage } from "../pages/all-tests/all-tests";
 import { TalkPage } from "../pages/talk/talk";
 import { StatsPage } from "../pages/stats/stats";
+import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
+import { TestsPage } from '../pages/tests/tests';
+import { TestdetailsPage } from '../pages/testdetails/testdetails';
 
 
 
@@ -50,8 +53,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
-import { TestsPage } from '../pages/tests/tests';
+
 
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -81,7 +83,8 @@ import { TestsPage } from '../pages/tests/tests';
     TalkPage,
     StatsPage,
     GroupdetailsPage,
-    TestsPage
+    TestsPage,
+    TestdetailsPage
   ],
   imports: [
     BrowserModule,
@@ -111,6 +114,7 @@ import { TestsPage } from '../pages/tests/tests';
         { component: TestsPage, name: 'Tests', segment: 'tests' },
         { component: TalkPage, name: 'Talk', segment: 'talks' },
         { component: GroupdetailsPage, name: 'GroupdetailsPage', segment: 'GroupdetailsPage/:group_id' },
+        { component: TestdetailsPage, name: 'TestdetailsPage', segment: 'TestdetailsPage/:test_id' },
 
         { component: TestingapidetailsPage, name: 'TestingapidetailsPage', segment: 'Testingapidetail/:ch_id' }
       ]
@@ -143,7 +147,8 @@ import { TestsPage } from '../pages/tests/tests';
     TalkPage,
     StatsPage,
     GroupdetailsPage,
-    TestsPage
+    TestsPage,
+    TestdetailsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
