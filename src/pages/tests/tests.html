@@ -1,0 +1,88 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tests</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+    <ion-toolbar>
+      <ion-segment [(ngModel)]="testsPage">
+        <ion-segment-button value="Upcoming">
+          Upcoming Tests
+        </ion-segment-button>
+        <ion-segment-button value="History">
+          History
+        </ion-segment-button>
+        <ion-segment-button value="Performance">
+          My Performance
+        </ion-segment-button>
+        
+      </ion-segment>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  
+  <ion-content class="outer-content card-background-page">
+    <div [ngSwitch]="testsPage">
+      <ion-list *ngSwitchCase="'History'">
+      
+      
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'Performance'">
+      
+      
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'Upcoming'">
+        <ion-grid>
+            <!-- <ion-col col-lg-4> -->
+              <ion-card>
+
+                <ion-row>
+                  <ion-col col-lg-4  *ngFor="let d of listingUpTests">
+              
+              <ion-card >
+                    <ion-card-header>
+                      <h2> {{d.title}} </h2>
+                    </ion-card-header>
+              
+                    <ion-card-content class="outer-content">
+                      
+                      <ion-list>
+                        <h3>Description: {{d.description}}</h3>
+                        <h3>Scheduled: {{d.scheduled_date}}</h3>
+                        <div text-center>
+                          <button ion-button outline (click)="getTestDetails(d.test_id)">
+                            Take Test
+                          </button>
+                        </div>
+                      </ion-list>
+                    </ion-card-content>
+                  </ion-card>
+                  </ion-col>
+                </ion-row>
+              
+                    
+              </ion-card>
+            <!-- </ion-col> -->
+        </ion-grid>
+      </ion-list>
+  
+    </div>
+  
+  </ion-content>
+  
