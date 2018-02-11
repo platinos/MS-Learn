@@ -1,0 +1,23 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>My Performance
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<ion-card>
+  <ion-card-header>
+    Doughnut Chart
+  </ion-card-header>
+  <ion-card-content>
+    <canvas #doughnutCanvas></canvas>
+  </ion-card-content>
+</ion-card>
+</ion-content>

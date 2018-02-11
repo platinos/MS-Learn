@@ -15,6 +15,15 @@ export class MessageServiceProvider {
   constructor(private http: HttpClient) {
     //console.log('Hello MessageServiceProvider Provider');
   }
+
+  getData(endpoint:String){
+
+    return this.http.get('http://35.194.226.60:3000/api/v1/'+endpoint)
+      .do(res => console.log(res));
+
+
+  }
+
   getMessage(quesid){
     var dataObj = {
       func: 'getquestionbyid',
@@ -87,4 +96,6 @@ export class MessageServiceProvider {
     return this.http.get('http://35.194.226.60:3000/api/v1/questions/' + id)
       .do(res => console.log(res));
   }
+
+   
 }
