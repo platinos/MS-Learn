@@ -23,6 +23,13 @@ export class TestsPage {
   };
   listingUpTests: [{}];
 
+  responseHisTests: any = {
+    "status": null,
+    "error": null,
+    "response": []
+  };
+  listingHisTests: [{}];
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private ms: MessageServiceProvider) {
   }
 
@@ -31,6 +38,13 @@ export class TestsPage {
       this.responseUpTests=data;
       this.listingUpTests=this.responseUpTests.response;
   });
+
+  this.ms.getData("tests/history/2").subscribe(data => {
+    this.responseHisTests=data;
+    this.listingUpTests=this.responseHisTests.response;
+});
+
+
   }
 
 }

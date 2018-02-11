@@ -39,6 +39,30 @@
     <div [ngSwitch]="testsPage">
       <ion-list *ngSwitchCase="'History'">
       
+        <div>
+
+          <ion-row>
+            <ion-col col-lg-4  *ngFor="let d of listingHisTests">
+        
+        <ion-card >
+              <ion-card-header>
+                <h2> {{d.title}} </h2>
+              </ion-card-header>
+        
+              <ion-card-content class="outer-content">
+                
+                <ion-list>
+                  <h3>Description: {{d.description}}</h3>
+                  <h3>Scheduled: {{d.scheduled_date}}</h3>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+            </ion-col>
+          </ion-row>
+        
+              
+        </div>
+      
       
       </ion-list>
 
@@ -50,7 +74,7 @@
       <ion-list *ngSwitchCase="'Upcoming'">
         <ion-grid>
             <!-- <ion-col col-lg-4> -->
-              <ion-card>
+              <div>
 
                 <ion-row>
                   <ion-col col-lg-4  *ngFor="let d of listingUpTests">
@@ -77,7 +101,7 @@
                 </ion-row>
               
                     
-              </ion-card>
+              </div>
             <!-- </ion-col> -->
         </ion-grid>
       </ion-list>
