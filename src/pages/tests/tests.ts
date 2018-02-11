@@ -41,7 +41,7 @@ export class TestsPage {
 
   this.ms.getData("tests/history/2").subscribe(data => {
     this.responseHisTests=data;
-    this.listingUpTests=this.responseHisTests.response;
+    this.listingHisTests=this.responseHisTests.response;
 });
 
 
