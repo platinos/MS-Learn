@@ -33,6 +33,12 @@ export class TestsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private ms: MessageServiceProvider) {
   }
 
+  getTestDetails(tid:any){
+
+    this.navCtrl.push('TestdetailsPage',{test_id : tid});
+
+  }
+
   ionViewDidLoad() {
     this.ms.getData("tests/upcoming/2").subscribe(data => {
       this.responseUpTests=data;
