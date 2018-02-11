@@ -51,6 +51,7 @@ import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
+import { TestsPage } from '../pages/tests/tests';
 
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -79,7 +80,8 @@ import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
     ProfilePage,
     TalkPage,
     StatsPage,
-    GroupdetailsPage
+    GroupdetailsPage,
+    TestsPage
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,8 @@ import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
         { component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
         { component: ScansPage, name: 'Scans', segment: 'scans' },
         { component: ProfilePage, name: 'Profile', segment: 'profile' },
-        { component: AllTestsPage, name: 'Tests', segment: 'all-tests' },
+        // { component: AllTestsPage, name: 'Tests', segment: 'all-tests' },
+        { component: TestsPage, name: 'Tests', segment: 'tests' },
         { component: TalkPage, name: 'Talk', segment: 'talks' },
         { component: GroupdetailsPage, name: 'GroupdetailsPage', segment: 'GroupdetailsPage/:group_id' },
 
@@ -139,7 +142,8 @@ import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
     AllTestsPage,
     TalkPage,
     StatsPage,
-    GroupdetailsPage
+    GroupdetailsPage,
+    TestsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
