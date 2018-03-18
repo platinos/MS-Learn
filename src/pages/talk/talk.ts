@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
-/**
- * Generated class for the TalkPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -31,6 +25,7 @@ export class TalkPage {
     this.ms.getData("conversations/2").subscribe(data => {
       this.responseTalks=data;
       this.listingTalks=this.responseTalks.response;
-  }
+  });
+}
 
 }

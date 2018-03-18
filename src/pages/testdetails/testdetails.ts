@@ -22,10 +22,20 @@ export class TestdetailsPage {
   };
   listingTest: [{}];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ViewController, private ms: MessageServiceProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private viewCtrl: ViewController, 
+    private ms: MessageServiceProvider
+  ) {
   }
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  beginTest(tid: any) {
+
+    this.navCtrl.push('InstructionsPage', { test_id: tid });
+
   }
 
   ionViewDidLoad() {

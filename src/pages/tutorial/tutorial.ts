@@ -3,8 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MenuController, NavController, Slides } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
-
-import { TabsPage } from '../tabs-page/tabs-page';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-tutorial',
@@ -23,7 +22,7 @@ export class TutorialPage {
   ) { }
 
   startApp() {
-    this.navCtrl.push(TabsPage).then(() => {
+    this.navCtrl.setRoot(LoginPage).then(() => {
       this.storage.set('hasSeenTutorial', 'true');
     })
   }
@@ -43,7 +42,7 @@ export class TutorialPage {
 
   ionViewDidLeave() {
     // enable the root left menu when leaving the tutorial page
-    this.menu.enable(true);
+    //this.menu.enable(true);
   }
 
 }

@@ -95,6 +95,10 @@
     <plugin name="cordova-plugin-x-toast" spec="^2.6.0" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <allow-navigation href="http://192.168.0.102:8100" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.228513160561-du3ihespc4ln1fpnk4c90njt6353176q" />
+    </plugin>
+    <engine name="android" spec="7.0.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

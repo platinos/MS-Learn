@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
-/**
- * Generated class for the TestsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -29,6 +24,7 @@ export class TestsPage {
     "response": []
   };
   listingHisTests: [{}];
+  testsPage: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private ms: MessageServiceProvider) {
   }
@@ -40,6 +36,8 @@ export class TestsPage {
   }
 
   ionViewDidLoad() {
+    this.testsPage ="Upcoming"; // for selecting to 
+
     this.ms.getData("tests/upcoming/2").subscribe(data => {
       this.responseUpTests=data;
       this.listingUpTests=this.responseUpTests.response;

@@ -41,6 +41,7 @@ import { StatsPage } from "../pages/stats/stats";
 import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
 import { TestsPage } from '../pages/tests/tests';
 import { TestdetailsPage } from '../pages/testdetails/testdetails';
+import { InstructionsPage } from "../pages/instructions/instructions";
 
 
 
@@ -53,7 +54,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-
+import { GooglePlus } from '@ionic-native/google-plus';
 
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
@@ -84,7 +85,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     StatsPage,
     GroupdetailsPage,
     TestsPage,
-    TestdetailsPage
+    TestdetailsPage,
+    InstructionsPage
   ],
   imports: [
     BrowserModule,
@@ -93,20 +95,20 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
-        { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
-        { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
-        { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
-        { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
-        { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
-        { component: MapPage, name: 'Map', segment: 'map' },
-        { component: AboutPage, name: 'About', segment: 'about' },
+        //{ component: SchedulePage, name: 'Schedule', segment: 'schedule' },
+        //{ component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
+        //{ component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
+        //{ component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
+        //{ component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
+        //{ component: MapPage, name: 'Map', segment: 'map' },
+        //{ component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
-        { component: SupportPage, name: 'SupportPage', segment: 'support' },
+        //{ component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
         { component: SignupPage, name: 'SignupPage', segment: 'signup' },
         // { component: AllTestsPage, name: 'AllTestsPage', segment: 'all-tests' },
-        { component: TestingapiPage, name: 'testingapi', segment: 'testingapi' },
+        //{ component: TestingapiPage, name: 'testingapi', segment: 'testingapi' },
         { component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
         { component: ScansPage, name: 'Scans', segment: 'scans' },
         { component: ProfilePage, name: 'Profile', segment: 'profile' },
@@ -115,8 +117,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
         { component: TalkPage, name: 'Talk', segment: 'talks' },
         { component: GroupdetailsPage, name: 'GroupdetailsPage', segment: 'GroupdetailsPage/:group_id' },
         { component: TestdetailsPage, name: 'TestdetailsPage', segment: 'TestdetailsPage/:test_id' },
-
-        { component: TestingapidetailsPage, name: 'TestingapidetailsPage', segment: 'Testingapidetail/:ch_id' }
+        { component: InstructionsPage, name: 'InstructionsPage', segment: 'InstructionsPage/:test_id' },
       ]
     }),
     IonicStorageModule.forRoot()
@@ -148,7 +149,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     StatsPage,
     GroupdetailsPage,
     TestsPage,
-    TestdetailsPage
+    TestdetailsPage,
+    InstructionsPage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -160,7 +162,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     BarcodeScanner,
     Toast,
     DataServiceProvider,
-    LocalNotifications
+    LocalNotifications,
+    GooglePlus
   ]
 })
 export class AppModule { }

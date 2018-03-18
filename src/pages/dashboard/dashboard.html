@@ -38,12 +38,53 @@
   </ion-refresher>
   <div [ngSwitch]="dashboardPage">
     <ion-list *ngSwitchCase="'dashboard'">
-     
+    <ion-card>
+      <ion-card-header>
+        <h2 ion-text color="danger"> Sorry! No Tests available.</h2>
+      </ion-card-header>
+    </ion-card>
       
     </ion-list>
+
+
+    <!-- end dashboard -->
+
+
     <ion-list *ngSwitchCase="'trending'">
-      <h1>trending</h1>
+      <ion-item-group>
+      
+        <!-- <ion-item-divider sticky>
+          <ion-label>
+            Bleh{{runningTestGroup}}
+          </ion-label>
+        </ion-item-divider> -->
+      
+        <ion-item-sliding *ngFor="let trend of listingTrending" #slidingItem [attr.track]="'bleh'+trend.type | lowercase">
+      
+          <button ion-item (click)="goToTestDetail(runningTest)">
+            <h3 [innerHtml]="trend.ques_txt"></h3>
+            <p>
+              <!-- {{session.timeStart}} &mdash; {{session.timeEnd}}: {{session.location}} -->
+              {{trend.subject}} &mdash; {{trend.chapter}}
+            </p>
+          </button>
+      
+          <ion-item-options>
+            <button ion-button color="favorite" (click)="addFavorite(slidingItem, session)" *ngIf="segment === 'all'">
+              Favorite
+            </button>
+            <button ion-button color="danger" (click)="removeFavorite(slidingItem, session, 'Remove Favorite')" *ngIf="segment === 'favorites'">
+              Remove
+            </button>
+          </ion-item-options>
+      
+        </ion-item-sliding>
+      
+      </ion-item-group>
     </ion-list>
+
+    <!-- End Trending -->
+
     <ion-list *ngSwitchCase="'runningTests'">
 
 

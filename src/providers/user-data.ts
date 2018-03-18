@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Events } from 'ionic-angular';
+import { Events, App} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+//import { NavController } from 'ionic-angular/navigation/nav-controller';
 
 
 @Injectable()
@@ -12,7 +13,9 @@ export class UserData {
 
   constructor(
     public events: Events,
-    public storage: Storage
+    public storage: Storage,
+    public app: App,
+    
   ) {}
 
   hasFavorite(sessionName: string): boolean {
@@ -30,9 +33,10 @@ export class UserData {
     }
   };
 
-  login(username: string): void {
+  login(userData: any): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setUsername(userData.dispalyName);
+
     this.events.publish('user:login');
   };
 

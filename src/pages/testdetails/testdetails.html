@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let d of listingTest">
+    <ion-item *ngFor="let d of listingTest" (click)="beginTest(d?.id)">
       <ion-avatar item-start>
         <img src="https://www.atomix.com.au/media/2015/06/atomix_user31.png">
       </ion-avatar>

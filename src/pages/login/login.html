@@ -1,8 +1,6 @@
 <ion-header>
 	<ion-navbar>
-		<button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+		
 		<ion-title>Login</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -42,6 +40,10 @@
 				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
 			</ion-col>
 		</ion-row>
+		<!-- <button ion-button block color="danger" (click)="login()" *ngIf="!userProfile">
+			<ion-icon name="logo-googleplus"></ion-icon>
+			Login with Google
+		</button> -->
 	</form>
 
 </ion-content>
