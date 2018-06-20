@@ -4,7 +4,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -12,7 +11,6 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
@@ -28,6 +26,13 @@ import { SupportPage } from '../pages/support/support';
 import { TestingapiPage } from '../pages/testingapi/testingapi';
 import { TestingapidetailsPage } from '../pages/testingapidetails/testingapidetails';
 
+import { PopoverPage } from '../pages/titlemenu/titlemenu';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { firebaseConfig } from '../config';
+import { AuthService } from '../providers/auth-service/auth.service';
+
+
 
 
 
@@ -42,6 +47,7 @@ import { GroupdetailsPage } from '../pages/groupdetails/groupdetails';
 import { TestsPage } from '../pages/tests/tests';
 import { TestdetailsPage } from '../pages/testdetails/testdetails';
 import { InstructionsPage } from "../pages/instructions/instructions";
+import { TestpagePage } from "../pages/testpage/testpage"
 
 
 
@@ -55,8 +61,10 @@ import { Toast } from '@ionic-native/toast';
 import { DataServiceProvider } from '../providers/data-service/data-service';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GooglePlus } from '@ionic-native/google-plus';
-
 //import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+//import { YtProvider } from '../providers/yt/yt';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -86,12 +94,14 @@ import { GooglePlus } from '@ionic-native/google-plus';
     GroupdetailsPage,
     TestsPage,
     TestdetailsPage,
-    InstructionsPage
+    InstructionsPage,
+    TestpagePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(firebaseConfig.fire),
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
@@ -112,15 +122,17 @@ import { GooglePlus } from '@ionic-native/google-plus';
         { component: DashboardPage, name: 'Dashboard', segment: 'dashboard' },
         { component: ScansPage, name: 'Scans', segment: 'scans' },
         { component: ProfilePage, name: 'Profile', segment: 'profile' },
-        // { component: AllTestsPage, name: 'Tests', segment: 'all-tests' },
         { component: TestsPage, name: 'Tests', segment: 'tests' },
         { component: TalkPage, name: 'Talk', segment: 'talks' },
+        // { component: AllTestsPage, name: 'Tests', segment: 'all-tests' },
         { component: GroupdetailsPage, name: 'GroupdetailsPage', segment: 'GroupdetailsPage/:group_id' },
         { component: TestdetailsPage, name: 'TestdetailsPage', segment: 'TestdetailsPage/:test_id' },
         { component: InstructionsPage, name: 'InstructionsPage', segment: 'InstructionsPage/:test_id' },
+        { component: TestpagePage, name: 'TestPage', segment: 'TestPage/:test_id' }
       ]
     }),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -150,7 +162,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     GroupdetailsPage,
     TestsPage,
     TestdetailsPage,
-    InstructionsPage
+    InstructionsPage,
+    TestpagePage
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
@@ -163,7 +176,14 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Toast,
     DataServiceProvider,
     LocalNotifications,
-    GooglePlus
+    GooglePlus,
+    AngularFireAuth,
+    AuthService,
+    //YoutubeVideoPlayer,
+    //YtProvider,
+    InAppBrowser,
+    ScreenOrientation,
+    
   ]
 })
 export class AppModule { }

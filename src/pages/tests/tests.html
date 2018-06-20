@@ -30,14 +30,18 @@
   </ion-header>
   
   
-  <ion-content class="outer-content card-background-page">
+  <ion-content class="outer-content">
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+      </ion-refresher>
     <div [ngSwitch]="testsPage">
       <ion-list *ngSwitchCase="'History'">
       
         <div>
 
           <ion-row>
-            <ion-col col-lg-4  *ngFor="let d of listingHisTests">
+            <ion-col col-12 col-sm *ngFor="let d of listingHisTests">
         
         <ion-card >
               <ion-card-header>
@@ -69,34 +73,32 @@
       <ion-list *ngSwitchCase="'Upcoming'">
         <ion-grid>
             <!-- <ion-col col-lg-4> -->
-              <div>
-
+              
                 <ion-row>
-                  <ion-col col-lg-4  *ngFor="let d of listingUpTests">
-              
-              <ion-card >
-                    <ion-card-header>
-                      <h2> {{d.title}} </h2>
-                    </ion-card-header>
-              
-                    <ion-card-content class="outer-content">
+                  <ion-col col-12 col-sm *ngFor="let d of listingUpTests">
+
+
+
+                    <ion-card>
                       
-                      <ion-list>
-                        <h3>Description: {{d.description}}</h3>
-                        <h3>Scheduled: {{d.scheduled_date}}</h3>
-                        <div text-center>
-                          <button ion-button outline (click)="getTestDetails(d.test_id)">
-                            Take Test
-                          </button>
-                        </div>
-                      </ion-list>
-                    </ion-card-content>
-                  </ion-card>
+                      <ion-card-content>
+                        <ion-card-title>
+                          {{d?.title}}
+                        </ion-card-title>
+                        {{d?.description}}
+                        <br> Scheduled on : {{d?.scheduled_date | date:'MMM d, y h:mm:ss a'}}
+                      </ion-card-content>
+                       <div text-center>
+                        <button ion-button outline (click)="getTestDetails(d.test_id)">
+                          View Details
+                        </button>
+                      </div>
+                    </ion-card>
+
+
                   </ion-col>
                 </ion-row>
               
-                    
-              </div>
             <!-- </ion-col> -->
         </ion-grid>
       </ion-list>

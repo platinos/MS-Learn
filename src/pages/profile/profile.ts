@@ -1,8 +1,9 @@
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { ModalController} from 'ionic-angular';
 import { StatsPage } from '../stats/stats';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
+import { PopoverPage } from '../titlemenu/titlemenu';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -33,7 +34,7 @@ export class ProfilePage {
   };
   listingGroups: [{}];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, private ms: MessageServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public modalCtrl: ModalController, private ms: MessageServiceProvider) {
   }
 
   presentStatsModal() {
@@ -52,4 +53,8 @@ export class ProfilePage {
     this.navCtrl.push('GroupdetailsPage', { group_id: gid });
   }
 
+  presentPopover(event: Event) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({ ev: event });
+  }
 }

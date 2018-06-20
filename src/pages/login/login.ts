@@ -10,6 +10,7 @@ import { UserOptions } from '../../interfaces/user-options';
 import { TabsPage } from '../tabs-page/tabs-page';
 import { SignupPage } from '../signup/signup';
 //import { GooglePlus } from '@ionic-native/google-plus';
+import { AuthService } from '../../providers/auth-service/auth.service';
 
 
 
@@ -18,7 +19,7 @@ import { SignupPage } from '../signup/signup';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
+  login: UserOptions = { username: '', password: '', email: '', pic:'' };
   submitted = false;
 
 
@@ -35,6 +36,7 @@ export class LoginPage {
     public navCtrl: NavController, 
     public userData: UserData, 
     public menu: MenuController,
+    private auth: AuthService
   //  private googlePlus: GooglePlus
   ) { }
 
@@ -94,4 +96,20 @@ export class LoginPage {
     this.navCtrl.popToRoot();
   }
   
+  loginWithGoogle() {
+    this.auth.signInWithGoogle()
+      .then(
+      () => {
+              
+              console.log(this.auth.afAuth.auth.currentUser.photoURL);
+        
+              this.login.username = this.auth.afAuth.auth.currentUser.displayName;
+              this.login.email = this.auth.afAuth.auth.currentUser.email;
+              this.login.pic = this.auth.afAuth.auth.currentUser.photoURL;
+              this.userData.login(this.login);
+              this.navCtrl.setRoot(TabsPage)
+            },
+        error => console.log(error.message)
+      );
+  }
 }

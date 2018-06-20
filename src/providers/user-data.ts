@@ -35,29 +35,44 @@ export class UserData {
 
   login(userData: any): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(userData.dispalyName);
+    //console.log(userData);
+    
+    this.setUsername(userData.username, userData.email, userData.pic);
 
     this.events.publish('user:login');
   };
 
   signup(username: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
-    this.setUsername(username);
+    this.setUsername(username, '', '');
     this.events.publish('user:signup');
   };
 
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);
     this.storage.remove('username');
+    this.storage.remove('email');
     this.events.publish('user:logout');
   };
 
-  setUsername(username: string): void {
+  setUsername(username: string, email: string, pic: string): void {
     this.storage.set('username', username);
+    this.storage.set('email', email);
+    this.storage.set('pic', pic);
   };
 
   getUsername(): Promise<string> {
     return this.storage.get('username').then((value) => {
+      return value;
+    });
+  };
+  getEmail(): Promise<string> {
+    return this.storage.get('email').then((value) => {
+      return value;
+    });
+  };
+  getPic(): Promise<string> {
+    return this.storage.get('pic').then((value) => {
       return value;
     });
   };

@@ -10,12 +10,12 @@
     </ion-header>
     <ion-content class="outer-content">
       <ion-list>
-        <ion-list-header>
+        <ion-list-header (click)="openPage(ProfilePage)">
             <ion-avatar item-start>
-              <img src="https://www.atomix.com.au/media/2015/06/atomix_user31.png">
+              <img src={{userPic}}>
             </ion-avatar>
-            <h2>Welcome Priyank</h2>
-            <p>priyank@platinos.in</p>
+            <h2>Welcome {{userName}}</h2>
+            <p>{{userEmail}}</p>
         </ion-list-header>
         <button ion-item menuClose *ngFor="let p of loggedInPages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>

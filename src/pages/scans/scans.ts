@@ -4,8 +4,11 @@ import { MessageServiceProvider } from '../../providers/message-service/message-
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { LoadingController } from 'ionic-angular';
-import { PopoverPage } from '../about-popover/about-popover';
+import { PopoverPage } from '../titlemenu/titlemenu';
 import { PopoverController } from 'ionic-angular';
+//import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
  * Generated class for the ScansPage page.
@@ -27,10 +30,18 @@ export class ScansPage {
   title: string;
   id: number;
   selectedProduct: any;
+  youtubeId: string;
   
 
 
-  constructor(private barcodeScanner: BarcodeScanner, private toast: Toast, public popoverCtrl: PopoverController, private ms: MessageServiceProvider, public loadingCtrl: LoadingController) {
+  constructor(private barcodeScanner: BarcodeScanner, 
+    private toast: Toast, 
+    public popoverCtrl: PopoverController, 
+    private ms: MessageServiceProvider, 
+    public loadingCtrl: LoadingController,
+    //private youtube: YoutubeVideoPlayer,
+    private iab: InAppBrowser,
+    private screenOrientation: ScreenOrientation) {
     //this.getMessage(1804);
   }
 
@@ -49,12 +60,16 @@ export class ScansPage {
 
   }
   showData(data) {
+    //console.log(data.data[0]);
+    
     this.chapter = data.data[0].chapter;
     //this.quesImg = "http://msmypaper.com/mypaper/role_admin/" + data.data[0].ques_img;
     this.quesText = data.data[0].ques_txt;
     this.title = "Q. " + data.data[0].id + " (" + data.data[0].subject + ")";
     this.id = data.data[0].id;
-    
+    this.youtubeId = data.data[0].youtube;
+    this.youtubeId = this.youtubeId.substring(this.youtubeId.lastIndexOf("v=") + 1, this.youtubeId.lastIndexOf("&"));
+    this.youtubeId = this.youtubeId.substr(1);
 
   }
 
@@ -65,7 +80,7 @@ export class ScansPage {
       this.id = Number(this.id) - 1;
     //alert(this.id);
     this.getMessage(this.id);
-    console.log(e);
+   // console.log(e);
 
   }
 
@@ -122,15 +137,30 @@ export class ScansPage {
 
   }
   ionViewDidLoad() {
-  
+    
   }
   ionViewDidEnter(){
     this.scan();
+    //this.getMessage('7114');
   }
 
   presentPopover(event: Event) {
     let popover = this.popoverCtrl.create(PopoverPage);
     popover.present({ ev: event });
   }
+  playVideo(){
+   // this.youtube.openVideo('c8jP5GIWlak');
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+   console.log(this.youtubeId);
+    const browser = this.iab.create('http://platinos.in/video.php?v=' + this.youtubeId, '_blank', 'location=no,zoom=no,hardwareback=no,footer=yes');
+    
+    browser.on('exit').subscribe(
+      () => {
+        this.screenOrientation.unlock();
+
+      }
+    )
+  }
+  
 
 }

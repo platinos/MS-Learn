@@ -40,6 +40,22 @@
 				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
 			</ion-col>
 		</ion-row>
+		<ion-row responsive-sm>
+			<ion-col>
+				<ion-list>
+				
+					<button ion-button icon-left block clear (click)="loginWithGoogle()">
+						<ion-icon name="logo-google"></ion-icon>
+						Log in with Google
+					</button>
+				
+					<!-- <button ion-button icon-left block clear (click)="signup()">
+						<ion-icon name="person-add"></ion-icon>
+						Sign up
+					</button> -->
+				</ion-list>
+			</ion-col>
+		</ion-row>
 		<!-- <button ion-button block color="danger" (click)="login()" *ngIf="!userProfile">
 			<ion-icon name="logo-googleplus"></ion-icon>
 			Login with Google

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
+import { PopoverPage } from '../titlemenu/titlemenu';
 
 
 
@@ -26,7 +27,7 @@ export class TestsPage {
   listingHisTests: [{}];
   testsPage: String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private ms: MessageServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private ms: MessageServiceProvider) {
   }
 
   getTestDetails(tid:any){
@@ -38,17 +39,29 @@ export class TestsPage {
   ionViewDidLoad() {
     this.testsPage ="Upcoming"; // for selecting to 
 
-    this.ms.getData("tests/upcoming/2").subscribe(data => {
+    this.ms.getData("tests/time/upcoming").subscribe(data => {
       this.responseUpTests=data;
       this.listingUpTests=this.responseUpTests.response;
   });
 
-  this.ms.getData("tests/history/2").subscribe(data => {
+  this.ms.getData("tests/time/past").subscribe(data => {
     this.responseHisTests=data;
     this.listingHisTests=this.responseHisTests.response;
 });
 
 
   }
+  presentPopover(event: Event) {
+    let popover = this.popoverCtrl.create(PopoverPage);
+    popover.present({ ev: event });
+  }
+  doRefresh(refresher){
+    setTimeout(() => {
+      this.ionViewDidLoad();
+      refresher.complete();
+    }, 2000);
+
+}
+
 
 }

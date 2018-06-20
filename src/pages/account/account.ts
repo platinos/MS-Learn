@@ -42,7 +42,7 @@ export class AccountPage {
     alert.addButton({
       text: 'Ok',
       handler: (data: any) => {
-        this.userData.setUsername(data.username);
+        this.userData.setUsername(data.username, "", "");
         this.getUsername();
       }
     });

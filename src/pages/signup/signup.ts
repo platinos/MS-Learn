@@ -15,7 +15,7 @@ import { TabsPage } from '../tabs-page/tabs-page';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  signup: UserOptions = { username: '', password: '' };
+  signup: UserOptions = { username: '', password: '', email: '', pic: '' };
   submitted = false;
 
   constructor(public navCtrl: NavController, public userData: UserData) {}

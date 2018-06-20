@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Events, MenuController, Nav, Platform, App } from 'ionic-angular';
+import { Events, MenuController, Nav, Platform, App, AlertController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 //import { AboutPage } from '../pages/about/about';
@@ -22,6 +22,10 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { TestsPage } from '../pages/tests/tests';
 import { ProfilePage } from '../pages/profile/profile';
 import { TalkPage } from '../pages/talk/talk';
+
+//import { AuthService } from '../providers/auth-service/auth.service';
+
+//import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 
 export interface PageInterface {
@@ -57,7 +61,9 @@ export class ConferenceApp {
   //   { title: 'Available Tests', name: 'TabsPage', component: AllTestsPage, tabComponent: SchedulePage, index: 0, icon: 'help' }
   // ];
 
-  userName: string;
+  userName: string  = '';
+  userEmail: string = '';
+  userPic: string = '../assets/img/speakers/face.jpg';
 
   loggedInPages: PageInterface[] = [
     { title: 'Dashboard', name: 'Dashboard', component: TabsPage, tabComponent: DashboardPage, index: 0, icon: 'speedometer' },
@@ -85,7 +91,9 @@ export class ConferenceApp {
     public storage: Storage,
     public splashScreen: SplashScreen,
     public localNotifications: LocalNotifications,
-    public app: App
+    public app: App,
+    public alertCtrl: AlertController
+    //private auth: AuthService
   ) {
 
     // Schedule delayed notification
@@ -107,7 +115,19 @@ export class ConferenceApp {
               this.rootPage = TabsPage;
                this.userData.getUsername().then((username) => {
                  this.userName = username;
+                 console.log(this.userName);
+                 
                });
+              this.userData.getEmail().then((email) => {
+                this.userEmail = email;
+                console.log(email);
+                
+              });
+              this.userData.getPic().then((pic) => {
+                this.userPic = pic;
+                console.log(pic);
+
+              });
             }
             else{
             this.rootPage = LoginPage;
@@ -188,6 +208,7 @@ export class ConferenceApp {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
       this.splashScreen.hide();
+      //this.initPushNotification();
     });
   }
 
@@ -207,5 +228,6 @@ export class ConferenceApp {
     }
     return;
   }
+
 
 }

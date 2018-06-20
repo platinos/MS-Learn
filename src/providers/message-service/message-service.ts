@@ -16,10 +16,16 @@ export class MessageServiceProvider {
     //console.log('Hello MessageServiceProvider Provider');
   }
 
-  getData(endpoint:String){
+  getData(endpoint:string){
 
     return this.http.get('http://35.194.226.60:3000/api/v1/'+endpoint)
       .do(res => console.log(res));
+
+
+  }
+  getFileData(endpoint: string) {
+
+    return this.http.get(endpoint);
 
 
   }

@@ -36,14 +36,13 @@
   <div [ngSwitch]="profilePage">
     <ion-list *ngSwitchCase="'Account'">
       <div padding-top text-center>
-        <img src="https://www.atomix.com.au/media/2015/06/atomix_user31.png" alt="avatar" class="avatar">
+        <img src={{userPic}} alt="avatar" class="avatar">
         <h2>Priyank</h2>
       
         <ion-list inset>
           <!-- <button ion-item (click)="updatePicture()">Update Picture</button> -->
           <button ion-item (click)="changeUsername()">Change Username</button>
           <button ion-item (click)="changePassword()">Change Password</button>
-          <!-- <button ion-item (click)="support()">Support</button> -->
           <button ion-item (click)="presentStatsModal()">My Performance</button>
           <button ion-item (click)="logout()">Logout</button>
         </ion-list>
@@ -56,7 +55,7 @@
           <!-- <ion-col col-lg-4> -->
             <ion-card (click)="getGroupDetails(d.id)">
                 
-                  <img src="https://images.unsplash.com/photo-1432847712612-926caafaa802?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7f7648f33be7bf4dc75b9d4de3d7adcd&dpr=1&auto=format&fit=crop&w=376&h=251&q=60&cs=tinysrgb" class="blur"/>
+                  <img src="../../assets/img/group-bg.jpg" class="blur"/>
                   <div class="card-title">{{d?.name}}</div>
                   <div class="card-subtitle">{{d?.description}}</div>
                 

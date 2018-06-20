@@ -21,6 +21,7 @@ export class TestdetailsPage {
     "response": []
   };
   listingTest: [{}];
+  file_url: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -33,8 +34,8 @@ export class TestdetailsPage {
   }
 
   beginTest(tid: any) {
-
-    this.navCtrl.push('InstructionsPage', { test_id: tid });
+ 
+    this.navCtrl.push('InstructionsPage', { test_id: tid, test_file: this.file_url });
 
   }
 
@@ -42,8 +43,11 @@ export class TestdetailsPage {
     //console.log('ionViewDidLoad GroupdetailsPage');
     var tid = this.navParams.data.test_id;
     this.ms.getData("tests/" + tid).subscribe(data => {
+      console.log(data);
+      
       this.responseTest = data;
       this.listingTest = this.responseTest.response;
+      this.file_url = this.responseTest.response[0].file_url;
     });
 
 
