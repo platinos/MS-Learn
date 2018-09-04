@@ -24,10 +24,10 @@ export class MessageServiceProvider {
 
   }
   getFileData(endpoint: string) {
-
     return this.http.get(endpoint);
-
-
+  }
+  postStudentResponse(sturesponse: any){
+    return this.http.post('http://35.194.226.60:3000/api/v1/performance', sturesponse).do(res => console.log(res));
   }
 
   getMessage(quesid){

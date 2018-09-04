@@ -21,7 +21,7 @@ import { ScansPage } from '../pages/scans/scans';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { TestsPage } from '../pages/tests/tests';
 import { ProfilePage } from '../pages/profile/profile';
-import { TalkPage } from '../pages/talk/talk';
+//import { TalkPage } from '../pages/talk/talk';
 
 //import { AuthService } from '../providers/auth-service/auth.service';
 
@@ -70,7 +70,7 @@ export class ConferenceApp {
     { title: 'Scans', name: 'Scans', component: TabsPage, tabComponent: ScansPage, index: 1, icon: 'qr-scanner' },
     { title: 'Tests', name: 'Tests', component: TabsPage, tabComponent: TestsPage, index: 2, icon: 'time' },
     { title: 'Profile', name: 'AccountPage', component: TabsPage, tabComponent: ProfilePage, index: 3, icon: 'person' },
-    { title: 'Talk', name: 'Talk', component: TabsPage, tabComponent: TalkPage, index: 4, icon: 'text' },
+    //{ title: 'Talk', name: 'Talk', component: TabsPage, tabComponent: TalkPage, index: 4, icon: 'text' },
     //{ title: 'Support', name: 'SupportPage', component: TabsPage, tabComponent: SupportPage, index: 3, icon: 'help' },
     { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
   ];
@@ -97,13 +97,13 @@ export class ConferenceApp {
   ) {
 
     // Schedule delayed notification
-    this.localNotifications.schedule({
-      text: 'You opened the app',
-      at: new Date(new Date().getTime() + 100),
-      led: 'FF0000', 
-      sound:'file://sound.mp3',
-      icon: 'home'
-    });
+    // this.localNotifications.schedule({
+    //   text: 'You opened the app',
+    //   at: new Date(new Date().getTime() + 100),
+    //   led: 'FF0000', 
+    //   sound:'file://sound.mp3',
+    //   icon: 'home'
+    // });
     // Check if the user has already seen the tutorial
     this.storage.get('hasSeenTutorial')
       .then((hasSeenTutorial) => {

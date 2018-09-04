@@ -67,7 +67,28 @@
 
       <ion-list *ngSwitchCase="'Performance'">
       
+      <div col-12 col-sm *ngFor="let p of listingPerformance">
       
+      
+      
+        <ion-card>
+      
+          <ion-card-content>
+            <ion-card-title>
+              You scored {{p?.score}} / {{p?.score}}
+            </ion-card-title>
+            <!-- {{p?.score}} -->
+            <br> Test on : {{p?.createdon | date:'MMM d, y h:mm:ss a'}}
+          </ion-card-content>
+          <div text-center>
+            <button ion-button outline (click)="getTestDetails(p.test_id)">
+              View Details
+            </button>
+          </div>
+        </ion-card>
+      
+      
+      </div>
       </ion-list>
   
       <ion-list *ngSwitchCase="'Upcoming'">

@@ -25,6 +25,12 @@ export class TestsPage {
     "response": []
   };
   listingHisTests: [{}];
+  listingPerformance: [{}];
+  responsePerformance: any = {
+    "status": null,
+    "error": null,
+    "response": []
+  };
   testsPage: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private ms: MessageServiceProvider) {
@@ -47,6 +53,10 @@ export class TestsPage {
   this.ms.getData("tests/time/past").subscribe(data => {
     this.responseHisTests=data;
     this.listingHisTests=this.responseHisTests.response;
+});
+    this.ms.getData("performance/1").subscribe(data => {
+    this.responsePerformance=data;
+    this.listingPerformance=this.responsePerformance.response;
 });
 
 
