@@ -21,6 +21,8 @@ export class TestpagePage {
   showPrev = false;
   noOfQuestions = [];
   reviewQuestions = [];
+  savedQuestion = [];
+  savedReviewQuestion = [];
   //responseObj : {questionId: number, answer: number};
   studentResponse:any = [{}];
 
@@ -182,14 +184,72 @@ export class TestpagePage {
     if (this.reviewQuestions.indexOf(qid-1) > -1) return true;
     else return false;
   }
+
+  isSavedReviewed(qid){
+    if (this.savedReviewQuestion.indexOf(qid-1) > -1) return true;
+    else return false;
+  }
+
+  isSaved(qid){
+    if (this.savedQuestion.indexOf(qid-1) > -1) return true;
+    else return false;
+  }
+
   markForReview(qid) {
 
     var index = this.reviewQuestions.indexOf(qid-1);
     if(index !== -1) this.reviewQuestions.splice(index, 1);
     else
     this.reviewQuestions.push(qid-1);
+    this.nextQuestion(qid);
+
     
   }
+
+  markForSave(qid) {
+    if(this.studentResponse[qid-1].answer == 0)
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Warning',
+        subTitle: 'Please Select a Option',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
+    else
+    { 
+    var index = this.savedQuestion.indexOf(qid-1);
+    if(index !== -1) this.savedQuestion.splice(index, 1);
+    else
+    this.savedQuestion.push(qid-1);
+    this.nextQuestion(qid);
+    } 
+    
+  }
+  markForSavedReview(qid) {
+
+    if(this.studentResponse[qid-1].answer == 0)
+    {
+      let alert = this.alertCtrl.create({
+        title: 'Warning',
+        subTitle: 'Please Select a Option',
+        buttons: ['Dismiss']
+      });
+      alert.present();
+    }
+    else
+    {      
+    var index = this.savedReviewQuestion.indexOf(qid-1);
+    if(index !== -1) this.savedReviewQuestion.splice(index, 1);
+    else
+    this.savedReviewQuestion.push(qid-1);
+    this.nextQuestion(qid);
+    }
+
+    
+  }
+
+
   clearResponse(qid){
     this.studentResponse[qid-1].answer = 0;
   }

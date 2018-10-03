@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title><button ion-button menuToggle>All Questions</button></ion-title>
     <ion-buttons end>
-      <ion-title *ngIf="hidevalue==false"> {{hours}}:{{minutes}}</ion-title>
+      <ion-title *ngIf="hidevalue==false">Remaining Time	: {{hours}}:{{minutes}}</ion-title>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -33,9 +33,9 @@
 
 
   <ion-grid>
-    <ion-row justify-content-center align-items-center>
+    <ion-row>
   
-      <ion-col col-lg-6 col-xl-6>
+      <ion-col col-lg-8 col-xl-8>
   <ion-card>
     <ion-card-content>
       <ion-card-title>
@@ -63,34 +63,62 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
   <ion-row>
     <ion-col>
+      <button ion-button [outline]="! isSaved(qid)" (click)="markForSave(qid)">Save & Next</button>
       <button ion-button [outline]="! isReviewed(qid)" (click)="markForReview(qid)">Mark for review</button>
-    </ion-col>
-    <ion-col>
+      <button ion-button [outline]="! isSavedReviewed(qid)" (click)="markForSavedReview(qid)">Save & Mark for review</button>
       <button ion-button color="twitter" (click)="clearResponse(qid)">Clear Response</button>
     </ion-col>
   </ion-row>
+
   <ion-row>
     <ion-col>
       <button ion-button color="secondary" outline (click)="prevQuestion(qid)" [disabled]="!showPrev">Previous</button>
-    </ion-col>
-    <ion-col>
       <button ion-button color="secondary" outline (click)="nextQuestion(qid)" [disabled]="!showNext">Next</button>
     </ion-col>
   </ion-row>
+  <br><br><br>
+  <br><br><br>
+  <br><br><br>
   <button ion-button large icon-left full (click)="submitTest()">Submit Test</button>
       </ion-col>
+      <ion-col col-lg-4 col-xl-4>
+          <ion-card>
+              <ion-card-content>
+                  <ion-row>
+                    <ion-col>
+                        <button ion-button [color]="'danger'"></button><BR> Reviewed Questions
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button [color]="'favorite'"></button><BR> Saved Questions
+
+                      </ion-col>
+                      <ion-col>
+                          <button ion-button [color]="'review'"></button><BR> Saved Review Question
+
+                        </ion-col>
+                        <ion-col>
+                            <button ion-button [color]="'light'"></button><BR> No Option Selected
+
+                          </ion-col>
+                    </ion-row>
+                <ion-row>
+                    <ion-col col-lg-2 col-xl-2 *ngFor="let item of noOfQuestions; let i = index">
+                        <button ion-button [color]="isReviewed(i+1) ? 'danger' : isSaved(i+1) ? 'favorite' : isSavedReviewed(i+1) ? 'review' : 'light'" (click)="jumpToQuestion(i)">{{i+1}}</button>
+                  
+                      </ion-col>
+                  
+                </ion-row>
+                  </ion-card-content>
+          </ion-card>
+      </ion-col>
+    
       </ion-row>
 
       
-        <ion-row justify-content-center align-items-center>
-      
-          <ion-col col-lg-2 col-xl-2 *ngFor="let item of noOfQuestions; let i = index">
-            <button ion-button [color]="isReviewed(i+1) ? 'danger' : 'secondary'" outline (click)="jumpToQuestion(i)">{{i+1}}</button>
-      
-          </ion-col>
-        </ion-row>
+        
       
       </ion-grid>
 
