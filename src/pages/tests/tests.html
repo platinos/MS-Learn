@@ -36,12 +36,44 @@
         </ion-refresher-content>
       </ion-refresher>
     <div [ngSwitch]="testsPage">
+      <ion-list *ngSwitchCase="'Upcoming'">
+        <ion-grid>
+          <!-- <ion-col col-lg-4> -->
+      
+          <ion-row>
+            <ion-col ccol-12 col-xl-4 col-lg-4 col-md-6 *ngFor="let d of listingUpTests">
+      
+      
+      
+              <ion-card>
+      
+                <ion-card-content>
+                  <ion-card-title>
+                    {{d?.title}}
+                  </ion-card-title>
+                  {{d?.description}}
+                  <br> Scheduled on : {{d?.scheduled_date | date:'MMM d, y h:mm:ss a'}}
+                </ion-card-content>
+                <div text-center>
+                  <button ion-button outline (click)="getTestDetails(d.test_id)">
+                    View Details
+                  </button>
+                </div>
+              </ion-card>
+      
+      
+            </ion-col>
+          </ion-row>
+      
+          <!-- </ion-col> -->
+        </ion-grid>
+      </ion-list>
       <ion-list *ngSwitchCase="'History'">
       
         <div>
 
           <ion-row>
-            <ion-col col-12 col-sm *ngFor="let d of listingHisTests">
+            <ion-col col-12 col-xl-2 col-lg-3 col-md-4 *ngFor="let d of listingHisTests">
         
         <ion-card >
               <ion-card-header>
@@ -64,65 +96,30 @@
       
       
       </ion-list>
+<ion-list *ngSwitchCase="'Performance'">
+  <ion-row>
+    <ion-col col-12 col-xl-2 col-lg-3 col-md-4 *ngFor="let p of listingPerformance">
+      <ion-card>
 
-      <ion-list *ngSwitchCase="'Performance'">
-      
-      <div col-12 col-sm *ngFor="let p of listingPerformance">
-      
-      
-      
-        <ion-card>
-      
-          <ion-card-content>
-            <ion-card-title>
-              You scored {{p?.score}} / {{p?.score}}
-            </ion-card-title>
-            <!-- {{p?.score}} -->
-            <br> Test on : {{p?.createdon | date:'MMM d, y h:mm:ss a'}}
-          </ion-card-content>
-          <div text-center>
-            <button ion-button outline (click)="getTestDetails(p.test_id)">
-              View Details
-            </button>
-          </div>
-        </ion-card>
-      
-      
-      </div>
-      </ion-list>
+        <ion-card-content>
+          <ion-card-title>
+            You scored {{p?.score}} / {{p?.score}}
+          </ion-card-title>
+          <!-- {{p?.score}} -->
+          <br> Test on : {{p?.createdon | date:'MMM d, y h:mm:ss a'}}
+        </ion-card-content>
+        <div text-center>
+          <button ion-button outline (click)="getTestDetails(p.test_id)">
+            View Details
+          </button>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+</ion-list>
   
-      <ion-list *ngSwitchCase="'Upcoming'">
-        <ion-grid>
-            <!-- <ion-col col-lg-4> -->
-              
-                <ion-row>
-                  <ion-col col-12 col-sm *ngFor="let d of listingUpTests">
-
-
-
-                    <ion-card>
-                      
-                      <ion-card-content>
-                        <ion-card-title>
-                          {{d?.title}}
-                        </ion-card-title>
-                        {{d?.description}}
-                        <br> Scheduled on : {{d?.scheduled_date | date:'MMM d, y h:mm:ss a'}}
-                      </ion-card-content>
-                       <div text-center>
-                        <button ion-button outline (click)="getTestDetails(d.test_id)">
-                          View Details
-                        </button>
-                      </div>
-                    </ion-card>
-
-
-                  </ion-col>
-                </ion-row>
-              
-            <!-- </ion-col> -->
-        </ion-grid>
-      </ion-list>
+     
   
     </div>
   

@@ -14,6 +14,10 @@
 
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+  
+      <ion-col col-lg-6 col-xl-6>
   <ion-card>
     <ion-card-header>
       <h1> Welcome to Test : {{tid}} </h1>
@@ -23,37 +27,44 @@
     <ion-card-content class="outer-content">
   
       <ion-list>
-        <p>1. Immediately fill in the particulars on this page of the Test Booklet with only Black Ball Point Pen provided in the examination
-          hall.</p>
-        <p>2. The Answer Sheet is kept inside this Test Booklet. When you are directed to open the Test Booklet, take out the Answer
-          Sheet and fill in the particulars carefully.</p>
+        <p>1. Immediately fill in the particulars on this page of the Test Booklet with only Black Ball Point Pen provided
+          in the examination hall.
+        </p>
+        <p>2. The Answer Sheet is kept inside this Test Booklet. When you are directed to open the Test Booklet, take out the
+          Answer Sheet and fill in the particulars carefully.</p>
         <p>3. The test is of 3 hours duration.</p>
         <p>4. The Test consists of 90 questions. The maximum marks are 360.</p>
-        <p>5. There are three parts in the question paper A, B, C consisting of Physics, Chemistry and Mathematics having 30 questions
-          in each part of equal weightage. Each question is allotted 4 (four) marks for correct response.</p>
-        <p>6. Candidates will be awarded marks as stated above in instruction No. 5 for correct response of each question. &frac14;
-          (one-fourth) marks of the total marks allotted to the question (i.e. 1 mark) will be deducted for indicating incorrect
-          response of each question. No deduction from the total score will be made if no response is indicated for an item in the
-          answer sheet.</p>
-        <p>7. There is only one correct response for each question. Filling up more than one response in any question will be treated
-          as wrong response and marks for wrong response will be deducted accordingly as per instruction 6 above.</p>
-        <p>8. For writing particulars/marking responses on Side-1 and Side&ndash;2 of the Answer Sheet use only Black Ball Point Pen
-          provided in the examination hall.</p>
-        <p>9. No candidate is allowed to carry any textual material, printed or written, bits of papers, pager, mobile phone, any electronic
-          device, etc. except the Admit Card inside the examination room/hall.</p>
-        <p>10. Rough work is to be done on the space provided for this purpose in the Test Booklet only. This space is given at the
-          bottom of each page and in four pages ( Page 40-43) at the end of the booklet.</p>
+        <p>5. There are three parts in the question paper A, B, C consisting of Physics, Chemistry and Mathematics having 30
+          questions in each part of equal weightage. Each question is allotted 4 (four) marks for correct response.</p>
+        <p>6. Candidates will be awarded marks as stated above in instruction No. 5 for correct response of each question.
+          &frac14; (one-fourth) marks of the total marks allotted to the question (i.e. 1 mark) will be deducted for indicating
+          incorrect response of each question. No deduction from the total score will be made if no response is indicated for
+          an item in the answer sheet.</p>
+        <p>7. There is only one correct response for each question. Filling up more than one response in any question will
+          be treated as wrong response and marks for wrong response will be deducted accordingly as per instruction 6 above.</p>
+        <p>8. For writing particulars/marking responses on Side-1 and Side&ndash;2 of the Answer Sheet use only Black Ball
+          Point Pen provided in the examination hall.</p>
+        <p>9. No candidate is allowed to carry any textual material, printed or written, bits of papers, pager, mobile phone,
+          any electronic device, etc. except the Admit Card inside the examination room/hall.</p>
+        <p>10. Rough work is to be done on the space provided for this purpose in the Test Booklet only. This space is given
+          at the bottom of each page and in four pages ( Page 40-43) at the end of the booklet.</p>
         <p>11. On completion of the test, the candidate must hand over the Answer Sheet to the Invigilator on duty in the Room/Hall.
           However, the candidates are allowed to take away this Test Booklet with them.</p>
-        <p>12. The CODE for this Booklet is A. Make sure that the CODE printed on Side&ndash;2 of the Answer Sheet and also tally the
-          serial number of the Test Booklet and Answer Sheet are the same as that on this booklet. In case of discrepancy, the candidate
-          should immediately report the matter to the Invigilator for replacement of both the Test Booklet and the Answer Sheet.</p>
+        <p>12. The CODE for this Booklet is A. Make sure that the CODE printed on Side&ndash;2 of the Answer Sheet and also
+          tally the serial number of the Test Booklet and Answer Sheet are the same as that on this booklet. In case of discrepancy,
+          the candidate should immediately report the matter to the Invigilator for replacement of both the Test Booklet and
+          the Answer Sheet.</p>
         <p>13. Do not fold or make any stray mark on the Answer Sheet</p>
       </ion-list>
-
-
+  
+  
       <button ion-button large icon-left full (click)="startTest(tid)">Start Test</button>
     </ion-card-content>
   </ion-card>
+
+      </ion-col>
+      </ion-row>
+      </ion-grid>
+
 
 </ion-content>

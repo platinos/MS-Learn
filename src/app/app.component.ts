@@ -22,9 +22,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { TestsPage } from '../pages/tests/tests';
 import { ProfilePage } from '../pages/profile/profile';
 //import { TalkPage } from '../pages/talk/talk';
-
 //import { AuthService } from '../providers/auth-service/auth.service';
-
 //import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 
@@ -50,7 +48,6 @@ export class ConferenceApp {
   // List of pages that can be navigated to from the left menu
   // the left menu only works after login
   // the login page disables the left menu
-
   // appPages: PageInterface[] = [
   //   { title: 'Schedule', name: 'TabsPage', component: TabsPage, tabComponent: SchedulePage, index: 0, icon: 'calendar' },
   //   { title: 'Home', name: 'TabsPage', component: TabsPage, tabComponent: SpeakerListPage, index: 1, icon: 'contacts' },
@@ -65,15 +62,24 @@ export class ConferenceApp {
   userEmail: string = '';
   userPic: string = '../assets/img/speakers/face.jpg';
 
-  loggedInPages: PageInterface[] = [
+  public devWidth = this.platform.width();
+
+  loggedInPages: PageInterface[] = this.devWidth>576 ?[
     { title: 'Dashboard', name: 'Dashboard', component: TabsPage, tabComponent: DashboardPage, index: 0, icon: 'speedometer' },
-    { title: 'Scans', name: 'Scans', component: TabsPage, tabComponent: ScansPage, index: 1, icon: 'qr-scanner' },
     { title: 'Tests', name: 'Tests', component: TabsPage, tabComponent: TestsPage, index: 2, icon: 'time' },
     { title: 'Profile', name: 'AccountPage', component: TabsPage, tabComponent: ProfilePage, index: 3, icon: 'person' },
     //{ title: 'Talk', name: 'Talk', component: TabsPage, tabComponent: TalkPage, index: 4, icon: 'text' },
     //{ title: 'Support', name: 'SupportPage', component: TabsPage, tabComponent: SupportPage, index: 3, icon: 'help' },
     { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
-  ];
+  ] : [
+      { title: 'Dashboard', name: 'Dashboard', component: TabsPage, tabComponent: DashboardPage, index: 0, icon: 'speedometer' },
+      { title: 'Scans', name: 'Scans', component: TabsPage, tabComponent: ScansPage, index: 1, icon: 'qr-scanner' },
+      { title: 'Tests', name: 'Tests', component: TabsPage, tabComponent: TestsPage, index: 2, icon: 'time' },
+      { title: 'Profile', name: 'AccountPage', component: TabsPage, tabComponent: ProfilePage, index: 3, icon: 'person' },
+      //{ title: 'Talk', name: 'Talk', component: TabsPage, tabComponent: TalkPage, index: 4, icon: 'text' },
+      //{ title: 'Support', name: 'SupportPage', component: TabsPage, tabComponent: SupportPage, index: 3, icon: 'help' },
+      { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
+    ];
   loggedOutPages: PageInterface[] = [
 
     { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },

@@ -1,27 +1,34 @@
-<ion-header>
-	<ion-navbar>
-		
-		<ion-title>Login</ion-title>
-	</ion-navbar>
+<ion-header >
+
 </ion-header>
 
-<ion-content>
-	<div class="logo">
-		<img src="assets/img/appicon.svg" alt="Ionic logo">
-	</div>
-
-	<form #loginForm="ngForm" novalidate>
+<ion-content class="vertical-align-content bgColor">
+	<ion-grid>
+		<ion-row >
+			
+			<ion-col col-12 >
+				<div class="logo">
+					<img src="assets/img/ica-slidebox-img-1.png" alt="Ionic logo">
+				</div>
+			</ion-col>
+			
+		</ion-row>
+<ion-row justify-content-center align-items-center>
+	
+	<ion-col col-lg-3 col-xl-3>
+	
+	<!-- <form #loginForm="ngForm" novalidate>
 		<ion-list no-lines>
 			<ion-item>
 				<ion-label stacked color="primary">Username</ion-label>
 				<ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-					required>
+				 required>
 				</ion-input>
 			</ion-item>
 			<p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
 				Username is required
 			</p>
-
+	
 			<ion-item>
 				<ion-label stacked color="primary">Password</ion-label>
 				<ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
@@ -31,7 +38,7 @@
 				Password is required
 			</p>
 		</ion-list>
-
+	
 		<ion-row responsive-sm>
 			<ion-col>
 				<button ion-button (click)="onLogin(loginForm)" type="submit" block>Login</button>
@@ -39,27 +46,47 @@
 			<ion-col>
 				<button ion-button (click)="onSignup()" color="light" block>Signup</button>
 			</ion-col>
+		</ion-row> -->
+
+		<ion-row responsive-sm text-center>
+			<ion-col justify-content-center>
+				<h1 ion-text color="primary" >Hey! Welcome to <b>All My Test</b></h1>
+				<h3 ion-text color="light">Signup with your <b>google</b> account to begin the test.</h3>
+			</ion-col>
+			
 		</ion-row>
 		<ion-row responsive-sm>
 			<ion-col>
 				<ion-list>
-				
-					<button ion-button icon-left block clear (click)="loginWithGoogle()">
+	
+					<button ion-button icon-left block (click)="loginWithGoogle()">
 						<ion-icon name="logo-google"></ion-icon>
 						Log in with Google
 					</button>
-				
+	
 					<!-- <button ion-button icon-left block clear (click)="signup()">
-						<ion-icon name="person-add"></ion-icon>
-						Sign up
-					</button> -->
+							<ion-icon name="person-add"></ion-icon>
+							Sign up
+						</button> -->
 				</ion-list>
 			</ion-col>
 		</ion-row>
 		<!-- <button ion-button block color="danger" (click)="login()" *ngIf="!userProfile">
-			<ion-icon name="logo-googleplus"></ion-icon>
-			Login with Google
-		</button> -->
-	</form>
+				<ion-icon name="logo-googleplus"></ion-icon>
+				Login with Google
+			</button> -->
+	<!-- </form> -->
+	</ion-col>
+	
+</ion-row>
+
+
+	</ion-grid>
+	
+
+
+	
+
+	
 
 </ion-content>

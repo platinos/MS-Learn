@@ -15,4 +15,14 @@ page-user {
   .list {
     margin-bottom: 0;
   }
+  .vertical-align-content > *
+{
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+.bgColor{
+  background: linear-gradient(to bottom right, #ff000000, #a7700b);
+}
+
 }

@@ -13,45 +13,51 @@
 </ion-header>
 
 <ion-content>
+<ion-grid>
+  <ion-row justify-content-center align-items-center>
+    <ion-col col-lg-6 col-xl-6>
+<ion-card *ngFor="let d of listingTest">
+  <ion-card-content>
+    <div>
+      <img src="http://www.bluthemes.com/assets/img/blog/12/liftoff.jpg" />
+    </div>
+    <ion-card-title>
+      {{d?.title}}
+      <h2>{{d?.subject}}</h2>
+    </ion-card-title>
+    {{d?.description}}<br> Scheduled on : {{d?.scheduled_date | date:'MMM d, y h:mm:ss a'}}
+    <ion-row>
+      <ion-col>
+        <b>{{d?.duration}}</b>
+      </ion-col>
+      <ion-col text-center>
+        <b>Marks: {{d?.marks}}</b>
+      </ion-col>
+      <ion-col text-right>
+        <b>By: {{d?.by}}</b>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 
-    <ion-card *ngFor="let d of listingTest">
-        <ion-card-content>
-          <div>
-            <img src="http://www.bluthemes.com/assets/img/blog/12/liftoff.jpg" />
-          </div>
-          <ion-card-title>
-             {{d?.title}}
-             <h2>{{d?.subject}}</h2>
-          </ion-card-title>
-           {{d?.description}}<br>
-           Scheduled on : {{d?.scheduled_date | date:'MMM d, y h:mm:ss a'}}
-          <ion-row>
-            <ion-col>
-              <b>{{d?.duration}}</b>
-            </ion-col>
-            <ion-col text-center>
-              <b>Marks: {{d?.marks}}</b>
-            </ion-col>
-            <ion-col text-right>
-              <b>By: {{d?.by}}</b>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-        
-        
-        <div text-center>
 
-          
-          <ion-row>
-            <ion-col>
-              <button ion-button color="danger" (click)="dismiss()">Back to Tests</button>
-            </ion-col>
-            <ion-col>
-              <button ion-button (click)="beginTest(d?.id)">Take Test</button>
-            </ion-col>
-          </ion-row>
-        </div>
+  <div text-center>
+
+
+    <ion-row>
+      <ion-col>
+        <button ion-button color="danger" (click)="dismiss()">Back to Tests</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button (click)="beginTest(d?.id)">Take Test</button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-card>
+      </ion-col>
+
+  </ion-row>
+</ion-grid>
     
-    </ion-card>
  
 </ion-content>

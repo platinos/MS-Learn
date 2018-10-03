@@ -18,7 +18,7 @@ export class MessageServiceProvider {
 
   getData(endpoint:string){
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/'+endpoint)
+    return this.http.get('http://35.227.64.60:3000/api/v1/'+endpoint)
       .do(res => console.log(res));
 
 
@@ -27,7 +27,7 @@ export class MessageServiceProvider {
     return this.http.get(endpoint);
   }
   postStudentResponse(sturesponse: any){
-    return this.http.post('http://35.194.226.60:3000/api/v1/performance', sturesponse).do(res => console.log(res));
+    return this.http.post('http://35.227.64.60:3000/api/v1/performance', sturesponse).do(res => console.log(res));
   }
 
   getMessage(quesid){
@@ -61,37 +61,37 @@ export class MessageServiceProvider {
 
   getChapters() {
   
-    return this.http.get('http://35.194.226.60:3000/api/v1/chapters')
+    return this.http.get('http://35.227.64.60:3000/api/v1/chapters')
       .do(res => console.log(res));
 
   }
   getSubjects() {
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/subjects')
+    return this.http.get('http://35.227.64.60:3000/api/v1/subjects')
       .do(res => console.log(res));
 
   }
   getChapterDetails(ch_id) {
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/chapters/'+ch_id)
+    return this.http.get('http://35.227.64.60:3000/api/v1/chapters/'+ch_id)
       .do(res => console.log(res));
 
   }
   getQuestionPaper() {
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper')
+    return this.http.get('http://35.227.64.60:3000/api/v1/questionpaper')
       .do(res => console.log(res));
 
   }
   getQuestionPaperBySubject(subject) {
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper/subject/'+subject)
+    return this.http.get('http://35.227.64.60:3000/api/v1/questionpaper/subject/'+subject)
       .do(res => console.log(res));
 
   }
   getQuestionPaperDetails(id) {
 
-    return this.http.get('http://35.194.226.60:3000/api/v1/questionpaper/' + id)
+    return this.http.get('http://35.227.64.60:3000/api/v1/questionpaper/' + id)
       .do(res => console.log(res));
 
   }
@@ -99,7 +99,7 @@ export class MessageServiceProvider {
   getquestionDetails(id){
     console.log("looking for ques id : "+id);
     
-    return this.http.get('http://35.194.226.60:3000/api/v1/questions/' + id)
+    return this.http.get('http://35.227.64.60:3000/api/v1/questions/' + id)
       .do(res => console.log(res));
   }
 

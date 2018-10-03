@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { NavController, MenuController } from 'ionic-angular';
+import { NavController, MenuController} from 'ionic-angular';
 
 import { UserData } from '../../providers/user-data';
 
@@ -22,7 +22,6 @@ export class LoginPage {
   login: UserOptions = { username: '', password: '', email: '', pic:'' };
   submitted = false;
 
-
   // displayName: any;
   // email: any;
   // familyName: any;
@@ -36,7 +35,7 @@ export class LoginPage {
     public navCtrl: NavController, 
     public userData: UserData, 
     public menu: MenuController,
-    private auth: AuthService
+    private auth: AuthService,
   //  private googlePlus: GooglePlus
   ) { }
 

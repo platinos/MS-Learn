@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavParams, Events, NavController } from 'ionic-angular';
+import { NavParams, Events, NavController, Platform } from 'ionic-angular';
 
 import { DashboardPage } from '../dashboard/dashboard';
 import { ScansPage } from '../scans/scans';
@@ -22,9 +22,12 @@ export class TabsPage {
   tab5Root: any = TalkPage;
   mySelectedIndex: number;
 
+  public devWidth = this.platform.width();
+
   constructor(navParams: NavParams, public events: Events,
     public userData: UserData,
-    public navCtrl: NavController) {
+    public navCtrl: NavController,
+    public platform: Platform) {
     this.userData.hasLoggedIn().then((hasLoggedIn) => {
       if(hasLoggedIn === true){
       this.mySelectedIndex = navParams.data.tabIndex || 0;

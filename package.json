@@ -40,6 +40,7 @@
     "angularfire2": "^5.0.0-rc.5-next",
     "chart.js": "^2.7.2",
     "cordova-android": "7.1.0",
+    "cordova-browser": "5.0.4",
     "cordova-ios": "4.5.4",
     "cordova-plugin-badge": "^0.8.7",
     "cordova-plugin-crosswalk-webview": "^2.4.0",
@@ -75,7 +76,8 @@
   "cordova": {
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "browser"
     ],
     "plugins": {
       "cordova-plugin-crosswalk-webview": {
