@@ -104,6 +104,7 @@
 
                           </ion-col>
                     </ion-row>
+                    <hr>
                 <ion-row>
                     <ion-col col-lg-2 col-xl-2 *ngFor="let item of noOfQuestions; let i = index">
                         <button ion-button [color]="isReviewed(i+1) ? 'danger' : isSaved(i+1) ? 'favorite' : isSavedReviewed(i+1) ? 'review' : 'light'" (click)="jumpToQuestion(i)">{{i+1}}</button>
