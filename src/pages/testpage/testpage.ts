@@ -196,7 +196,7 @@ export class TestpagePage {
   }
 
   markForReview(qid) {
-
+    this.removeall(qid);
     var index = this.reviewQuestions.indexOf(qid-1);
     if(index !== -1) this.reviewQuestions.splice(index, 1);
     else
@@ -218,6 +218,7 @@ export class TestpagePage {
     }
     else
     { 
+      this.removeall(qid);
     var index = this.savedQuestion.indexOf(qid-1);
     if(index !== -1) this.savedQuestion.splice(index, 1);
     else
@@ -238,7 +239,8 @@ export class TestpagePage {
       alert.present();
     }
     else
-    {      
+    {     
+    this.removeall(qid);
     var index = this.savedReviewQuestion.indexOf(qid-1);
     if(index !== -1) this.savedReviewQuestion.splice(index, 1);
     else
@@ -249,8 +251,22 @@ export class TestpagePage {
     
   }
 
+  removeall(qid)
+  {
+    var index1 = this.savedReviewQuestion.indexOf(qid-1);
+    if(index1 !== -1) this.savedReviewQuestion.splice(index1, 1);
+
+    var index2 = this.savedQuestion.indexOf(qid-1);
+    if(index2 !== -1) this.savedQuestion.splice(index2, 1);
+
+    var index3 = this.reviewQuestions.indexOf(qid-1);
+    if(index3 !== -1) this.reviewQuestions.splice(index3, 1);
+
+  }
+
 
   clearResponse(qid){
     this.studentResponse[qid-1].answer = 0;
+    this.removeall(qid);
   }
 }
